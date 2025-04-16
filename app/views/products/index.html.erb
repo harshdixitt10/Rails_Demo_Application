@@ -1,0 +1,19 @@
+<div class="container my-5 text-center">
+  <h1 class="mb-4">Products</h1>
+
+  <a href="/products/new" class="btn btn-primary mb-4">Add New Product</a>
+
+  <div id="products" class="row justify-content-center">
+    <% @products.each do |product| %>
+      <div class="col-md-4 mb-3">
+        <div class="card h-100">
+          <div class="card-body">
+            <a href="/products/<%= product.id %>" class="text-decoration-none">
+              <h5 class="card-title"><%= product.name %></h5>
+            </a>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

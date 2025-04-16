@@ -1,0 +1,41 @@
+<div class="container mt-5" style="max-width: 400px;">
+  <% if flash[:alert] %>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <%= flash[:alert] %>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  <% end %>
+
+  <% if flash[:notice] %>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      <%= flash[:notice] %>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  <% end %>
+
+  <div class="card shadow">
+    <div class="card-body">
+      <h4 class="card-title text-center mb-4">Sign In</h4>
+
+      <%= form_with url: session_path, html: { class: 'needs-validation' } do |form| %>
+        <div class="mb-3">
+          <%= form.label :email_address, "Email", class: "form-label" %>
+          <%= form.email_field :email_address, class: "form-control", required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email", value: params[:email_address] %>
+        </div>
+
+        <div class="mb-3">
+          <%= form.label :password, "Password", class: "form-label" %>
+          <%= form.password_field :password, class: "form-control", required: true, autocomplete: "current-password", placeholder: "Enter your password", maxlength: 72 %>
+        </div>
+
+        <div class="d-grid">
+          <%= form.submit "Sign In", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+
+      <div class="text-center mt-3">
+        <%= link_to "Forgot password?", new_password_path, class: "text-decoration-none" %>
+      </div>
+    </div>
+  </div>
+</div>
